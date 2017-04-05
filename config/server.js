@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express');''
+var expressValidator = require('express-validator');
 var consign = require('consign');
 var bodyParser = require('body-parser');
 
@@ -10,6 +11,8 @@ app.set('views', './app/views');
 
 // MÓDULO PARA USO DO BODY PARSER, PARA RECEBIMENTO DAS REQUISIÇÕES POST.
 app.use(bodyParser.urlencoded({extended:true})); // extended:true - PERMITE IMPLEMENTAR URL CODIFICADAS ATRAVÉS DO JSON
+// VALIDAÇÃO DO EXPRESS
+app.use(expressValidator());
 
 // INICIALIZAÇÃO AUTOMATICA DOS MÓDULOS
 consign()
