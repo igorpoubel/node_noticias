@@ -5,6 +5,13 @@ module.exports = function (app) {
 
     app.post('/noticias/salvar',function (req, res) {
         var noticia = req.body;
-        res.send(noticia);
+
+        // ACESSANDO O db COMO UM NAMESPACE
+        var connection = app.config.dbConnection();
+        var Noticia = app.app.models.noticiasModel;
+
+        Noticia.save(connection, noticia, function (error, result) {
+            res.redirect('/noticias');
+        });
     });
 };
