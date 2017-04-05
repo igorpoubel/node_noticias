@@ -8,9 +8,9 @@ module.exports = function (app) {
 
         // ACESSANDO O db COMO UM NAMESPACE
         var connection = app.config.dbConnection();
-        var Noticia = app.app.models.noticiasModel;
+        var Noticia = new app.app.models.noticiasModel(connection);
 
-        Noticia.save(connection, noticia, function (error, result) {
+        Noticia.save(noticia, function (error, result) {
             res.redirect('/noticias');
         });
     });

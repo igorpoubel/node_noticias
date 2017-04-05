@@ -5,9 +5,9 @@ module.exports = function (app) {
 
         // ACESSANDO O db COMO UM NAMESPACE
         var connection = app.config.dbConnection();
-        var Noticia = app.app.models.noticiasModel;
+        var Noticia = new app.app.models.noticiasModel(connection);
 
-        Noticia.findAll(connection, function (error, result) {
+        Noticia.findAll(function (error, result) {
             res.render('noticias/noticias', {noticias: result});
         });
 
