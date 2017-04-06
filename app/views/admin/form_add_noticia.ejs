@@ -1,32 +1,44 @@
 <!DOCTYPE html>
-	<html lang="pt-br">
-		<head>
-			<meta charset="utf-8"/>
-			<title>Formulário de cadastro de Notícia</title>
-		</head>
-	<body>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <title>Formulário de cadastro de Notícia</title>
+</head>
+<body>
 
-		<h1>Adicionar notícia</h1>
-	<br>
+<h1>Adicionar notícia</h1>
+<br>
 
-	<form id="formNoticia" action="/noticias/salvar" method="post">
-		<label for="titulo">Título</label>
-		<input id="titulo" type="text" name="titulo" placeholder="Título da notícia" />
-		<br>
-		<label for="resumo">Resumo</label>
-		<input id="resumo" type="text" name="resumo" placeholder="Resumo" />
-		<br>
-		<label for="autor">Autor</label>
-		<input id="autor" type="text" name="autor" placeholder="Autor" />
-		<br>
-		<label for="data">Data da noticia</label>
-		<input id="data" type="date" name="data_noticia" placeholder="Data da noticia" />
-		<br>
-		<label for="noticia">Notícia</label>
-		<textarea name="noticia" id="noticia" cols="30" rows="10"></textarea>
-		<br><br>
-		<button type="submit">Enviar</button>
-	</form>
+<% if(validacao){ %>
+    <ul>
+        <% for(var i = 0; i < validacao.length; i++){ %>
+        <li>
+            <%= validacao[i].msg %>
+        </li>
+        <% } %>
+    </ul>
+<% } %>
 
-	</body>
+<br>
+
+<form id="formNoticia" action="/noticias/salvar" method="post">
+    <label for="titulo">Título</label>
+    <input id="titulo" type="text" name="titulo" value="<%= noticia.titulo %>" placeholder="Título da notícia"/>
+    <br>
+    <label for="resumo">Resumo</label>
+    <input id="resumo" type="text" name="resumo" value="<%= noticia.resumo %>" placeholder="Resumo"/>
+    <br>
+    <label for="autor">Autor</label>
+    <input id="autor" type="text" name="autor" value="<%= noticia.autor %>" placeholder="Autor"/>
+    <br>
+    <label for="data">Data da noticia</label>
+    <input id="data" type="date" name="data_noticia" value="<%= noticia.data_noticia %>" placeholder="Data da noticia"/>
+    <br>
+    <label for="noticia">Notícia</label>
+    <textarea name="noticia" id="noticia" cols="30" rows="10"><%= noticia.noticia %></textarea>
+    <br><br>
+    <button type="submit">Enviar</button>
+</form>
+
+</body>
 </html>
