@@ -1,4 +1,4 @@
-var express = require('express');''
+var express = require('express');
 var expressValidator = require('express-validator');
 var consign = require('consign');
 var bodyParser = require('body-parser');

@@ -11,6 +11,7 @@ Noticias.prototype.findById = function (id, callback) {
 };
 
 Noticias.prototype.save = function (data, callback) {
+    console.log(data);
     this._connection.query('INSERT INTO noticias SET ? ', data, callback);
 };
 
