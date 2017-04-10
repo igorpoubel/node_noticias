@@ -2,15 +2,10 @@
 module.exports = function (app) {
 
     app.get('/noticias', function (req, res) {
-
-        // ACESSANDO O db COMO UM NAMESPACE
-        var connection = app.config.dbConnection();
-        var Noticia = new app.app.models.noticiasModel(connection);
-
-        Noticia.findAll(function (error, result) {
-            res.render('noticias/noticias', {noticias: result});
-        });
-
-
+        app.app.controllers.noticias.noticias(app, req, res);
     });
+    app.get('/noticia', function (req, res) {
+        app.app.controllers.noticias.noticia(app, req, res);
+    });
+
 };

@@ -19,6 +19,7 @@ consign()
     .include('app/routes') // INICIALIZA TODOS OS MODULOS NA PASTA routes
     .then('config/dbConnection.js') // INICIALIZA SOMENTE O BANCO
     .then('app/models') // INICIALIZA MODELS
+    .then('app/controllers') // INICIALIZA CONTROLLERS
     .into(app);
 
 module.exports = app;
