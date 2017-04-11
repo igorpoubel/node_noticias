@@ -9,10 +9,13 @@ var app = express();
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
+// ==== MIDDLEWARE ====
 // MÓDULO PARA USO DO BODY PARSER, PARA RECEBIMENTO DAS REQUISIÇÕES POST.
 app.use(bodyParser.urlencoded({extended:true})); // extended:true - PERMITE IMPLEMENTAR URL CODIFICADAS ATRAVÉS DO JSON
 // VALIDAÇÃO DO EXPRESS
 app.use(expressValidator());
+// USA OS RECURSOS ESTÁTICOS COMO FOTOS, IMAGENS E JS
+app.use(express.static('./app/public'));
 
 // INICIALIZAÇÃO AUTOMATICA DOS MÓDULOS
 consign()

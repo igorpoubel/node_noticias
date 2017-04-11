@@ -15,6 +15,6 @@ module.exports.noticia = function (app, req, res) {
     var Noticia = new app.app.models.noticiasModel(connection);
 
     Noticia.findById(2, function (error, result) {
-        res.render('noticias/noticias', {noticias: result});
+        res.render('noticias/noticia', {noticias: result});
     });
 };
