@@ -7,15 +7,14 @@ module.exports.noticias_salvar = function (app, req, res) {
 
     var noticia = req.body;
 
-    req.assert('titulo','Obrigatório').notEmpty();
-    req.assert('resumo','Obrigatório').notEmpty();
-    req.assert('resumo','10 e 100').len(10,100);
-    req.assert('autor','Obrigatório').notEmpty();
-    req.assert('data_noticia','Obrigatório').notEmpty().isDate({format:'YYYY-MM-DD'});
-    req.assert('noticia','Obrigatório').notEmpty();
+    req.assert('titulo','Título obrigatório').notEmpty();
+    req.assert('resumo','Resumo obrigatório').notEmpty();
+    req.assert('resumo','Resumo deve ter pelo menos 10 caracteres e no máximo 100 caracteres').len(10,100);
+    req.assert('autor','Autor obrigatório').notEmpty();
+    req.assert('data_noticia','Data obrigatório').notEmpty().isDate({format:'YYYY-MM-DD'});
+    req.assert('noticia','Noticia obrigatório').notEmpty();
 
     var erros = req.validationErrors();
-    console.log(erros);
 
     if(erros !== false){
         res.render('admin/form_add_noticia', {validacao:erros, noticia:noticia});

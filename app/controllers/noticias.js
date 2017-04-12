@@ -3,6 +3,7 @@ module.exports.noticias = function (app, req, res) {
     var connection = app.config.dbConnection();
     var Noticia = new app.app.models.noticiasModel(connection);
 
+
     Noticia.findAll(function (error, result) {
         res.render('noticias/noticias', {noticias: result});
     });
@@ -14,7 +15,9 @@ module.exports.noticia = function (app, req, res) {
     var connection = app.config.dbConnection();
     var Noticia = new app.app.models.noticiasModel(connection);
 
-    Noticia.findById(2, function (error, result) {
-        res.render('noticias/noticia', {noticias: result});
+    var id = req.query['id'];
+
+    Noticia.findById(id, function (error, result) {
+        res.render('noticias/noticia', {noticia: result});
     });
 };
